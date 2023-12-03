@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Table</title>
+</head>
+
+<body>
+	<div class="topnav">
+		<a th:href="@{/}">HOME</a> <a class="active" th:href="@{/table}">TABLE</a>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div>
+		<table>
+			<tr>
+				<th>City</th>
+				<th>Category</th>
+				<th>No of Tickets</th>
+				<th>First name</th>
+				<th>Last name</th>
+				<th>ID</th>
+				<th>Price</th>
+			</tr>
+
+			<tr th:each="iterator : ${ticketinfo}">
+				<td th:text="${iterator.city}"></td>
+				<td th:text="${iterator.category}"></td>
+				<td th:text="${iterator.ticketNumb}"></td>
+				<td th:text="${iterator.firstname}"></td>
+				<td th:text="${iterator.lastname}"></td>
+				<td th:text="${iterator.id}"></td>
+				<td th:text="${iterator.totalPrice}"></td>
+				<td>
+				<a role ="button" th:href="@{/(id = ${iterator.id})}">UPDATE</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+
+</html>
