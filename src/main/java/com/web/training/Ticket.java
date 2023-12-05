@@ -1,11 +1,23 @@
 package com.web.training;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 public class Ticket {
 
+	@NotBlank (message = "Cannot be blank!")
 	private String city;
+	@NotBlank (message = "Cannot be blank!")
 	private String category;
+	@NotBlank(message = "Cannot be blank!")
+	@Min(value = 1,message = "Pls choose number of tickets")
 	private String ticketNumb;
+	@NotBlank(message = "Cannot be blank!")
+	@Size(min = 2, message = "Enter name longer then 2 chars")
 	private String firstname;
+	@NotBlank(message = "Cannot be blank!")
+	@Size(min = 2, message = "Enter last name longer then 2 chars")
 	private String lastname;
 	private int id;
 	private int totalPrice;

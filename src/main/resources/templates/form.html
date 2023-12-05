@@ -15,29 +15,39 @@
 	<br>
 	<div>
 		<form th:method="post" th:object="${ticket}" th:action="@{/submitItem}">
+		<p style="color:red;" th:errors="*{city}"></p>
 			<label for="scity">Select city</label>
 			<select class="select" th:field="*{city}">
 				<option style="color: blue" value="">Choose City</option>
-				<option th:each="iterator : ${cities}" th:text="${iterator}" th:value="${iterator}"></option>
+				<option style="color: blue" value="Berlin">Berlin</option>
+				<option style="color: blue" value="Hamburg">Hamburg</option>
+				<option style="color: blue" value="Leipzig">Leipzig</option>
 
 			</select> <br> <br> 
 			
 			<label for="seatcat">Choose Seat Category</label>
+			<p style="color:red;" th:errors="*{category}"></p>
 			<select class="select" th:field="*{category}">
 				<option style="color: blue" value="">Category</option>
-				<option th:each="iterator : ${categories}" th:text="${iterator}" th:value="${iterator}" ></option>
+				<option style="color: blue" value="Category One (40e)">Category One (40e)</option>
+				<option style="color: blue" value="Category Two (30e)">Category Two (30e)</option>
+				<option style="color: blue" value="Category Three (20e)">Category Three (20e)</option>
+				<option style="color: blue" value="Category Four (10e)">Category Four (10e)</option>
 			</select> <br> <br>
-			
+			<p style="color:red;" th:errors="*{ticketNumb}"></p>
 			<label for="ticketnumb">Number of tickets</label>
 			<select class="select" th:field="*{ticketNumb}">
-				<option style="color: blue" value="">Ticket number</option>
-				<option th:each="iterator : ${ticketnumber}" th:text="${iterator}" th:value="${iterator}" ></option>
+				<option style="color: blue" value="0">Ticket number</option>
+				<option style="color: blue" value="1">1</option>
+				<option style="color: blue" value="2">2</option>
+				<option style="color: blue" value="3">3</option>
+				<option style="color: blue" value="4">4</option>
 			</select> <br> <br> 
 			
 			<label for="totalprice">Total price:</label> 
 			<input type="text" id="totalprice" name="totalprice" th:field="*{totalPrice}">
 			<br> <br> 
-			
+			<p style="color:red;" th:errors="*{firstname}"></p>
 			<label for="fname">First name:</label> 
 			<input type="text" id="fname" name="fname" th:field="*{firstname}">
 			<br> <br> 
@@ -45,7 +55,7 @@
 			<label for="lname">Last name:</label> 
 			<input type="text" id="lname" name="lname" th:field="*{lastname}">
 			<br> <br> 
-			
+			<p style="color:red;" th:errors="*{id}"></p>
 			<label for="idnum">ID number:</label> 
 			<input type="text" id="idnum" name="idnum" th:field="*{id}">
 			<br> <br> 
