@@ -19,6 +19,7 @@ public class Ticket {
 	@NotBlank(message = "Cannot be blank!")
 	@Size(min = 2, message = "Enter last name longer then 2 chars")
 	private String lastname;
+	@UniqueId(message = "There is already user with the same ID ")
 	private int id;
 	private int totalPrice;
 

@@ -45,11 +45,7 @@ public class ControllerClass {
 	@PostMapping("/submitItem")
 	public String submitItem(@Valid Ticket ticket, BindingResult result, int id, String category, int ticketNumb) {
 		System.out.println(result.hasErrors());
-		boolean uniqueWebshopId = uniqueId(ticket);
-		if (uniqueWebshopId == true) {
-			System.out.println("postoji!!");
-			result.rejectValue("id", "", "There is already a user with same ID: ");
-		}
+		
 		if (result.hasErrors())
 			return "form";
 
@@ -57,12 +53,10 @@ public class ControllerClass {
 		if (index == Constants.NOTFOUND) {
 			tickets.add(ticket);
 			index = getIndexById(id);
-			ticket.calculateTotalPrice(category, ticketNumb);
-			tickets.set(index, ticket);
-		} else {
-			ticket.calculateTotalPrice(category, ticketNumb);
-			tickets.set(index, ticket);
 		}
+			
+		ticket.calculateTotalPrice(category, ticketNumb);
+		tickets.set(index, ticket);
 
 		return "redirect:/table";
 	}
@@ -74,15 +68,6 @@ public class ControllerClass {
 			}
 		}
 		return Constants.NOTFOUND;
-	}
-
-	private boolean uniqueId(Ticket ticket) {
-		for (int i = 0; i < tickets.size(); i++) {
-			if (tickets.get(i).getId() == ticket.getId()) {
-				return true;
-			}
-		}
-		return false;
 	}
 
 }
