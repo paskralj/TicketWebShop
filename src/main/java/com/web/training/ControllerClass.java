@@ -46,6 +46,8 @@ public class ControllerClass {
 	public String submitItem(@Valid Ticket ticket, BindingResult result, int id, String category, int ticketNumb) {
 		System.out.println(result.hasErrors());
 		
+		if(ticket.getFirstname().equals(ticket.getLastname())) result.rejectValue("firstname", "", "Pls enter name different then last name ");
+		
 		if (result.hasErrors())
 			return "form";
 
