@@ -3,8 +3,11 @@ package com.web.training.Repository;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.web.training.Ticket;
 
+@Repository
 public class TicketRepository {
 
 	private List<Ticket> tickets = new ArrayList<>();

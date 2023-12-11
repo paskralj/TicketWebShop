@@ -1,5 +1,6 @@
 package com.web.training.Controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,7 +16,8 @@ import jakarta.validation.Valid;
 @Controller
 public class ControllerClass {
 
-	TicketService ticketService = new TicketService();
+	@Autowired
+	TicketService ticketService;
 
 	@GetMapping("/")
 	public String homePage(Model model, @RequestParam(required = false) String id) {

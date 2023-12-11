@@ -2,15 +2,19 @@ package com.web.training.Service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
 import com.web.training.Constants;
 import com.web.training.Ticket;
 import com.web.training.Repository.TicketRepository;
 
+@Service
 public class TicketService {
 	
-	TicketRepository ticketRepository = new TicketRepository();
+	@Autowired
+	TicketRepository ticketRepository;
 	
 	public Ticket getTicketFromIndex(int index) {
 		return ticketRepository.getTicketFromIndex(index);
@@ -67,7 +71,7 @@ public class TicketService {
 	 * @param ticketNumb
 	 * 
 	 * If index = NOTFOUND, then add tickets and generate new index for it
-	 * else calculate total price and update ticket
+	 * ,else calculate total price and update ticket
 	 */
 	public void updateTicketsAfterSubmit(int id,Ticket ticket, String category, int ticketNumb) {
 		int index = getIndexById(id);
