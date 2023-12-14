@@ -6,13 +6,12 @@ import jakarta.validation.constraints.Size;
 
 public class Ticket {
 
-	@NotBlank (message = "Cannot be blank!")
-	private String city;
-	@NotBlank (message = "Cannot be blank!")
-	private String category;
 	@NotBlank(message = "Cannot be blank!")
-	@Min(value = 1,message = "Pls choose number of tickets")
-	private String ticketNumb;
+	private String city;
+	@NotBlank(message = "Cannot be blank!")
+	private String category;
+	@Min(value = 1, message = "Pls choose tickets number")
+	private int ticketNumb;
 	@NotBlank(message = "Cannot be blank!")
 	@Size(min = 2, message = "Enter name longer then 2 chars")
 	private String firstname;
@@ -23,7 +22,7 @@ public class Ticket {
 	private int id;
 	private int totalPrice;
 
-	public Ticket(String city, String category, String ticketNumb, String firstname, String lastname, int id) {
+	public Ticket(String city, String category, int ticketNumb, String firstname, String lastname, int id) {
 		super();
 		this.city = city;
 		this.category = category;
@@ -32,16 +31,12 @@ public class Ticket {
 		this.lastname = lastname;
 		this.id = id;
 
-		int ticketIntNumber = Integer.parseInt(ticketNumb);
-
-		this.totalPrice = calculateTotalPrice(category, ticketIntNumber);
+		this.totalPrice = calculateTotalPrice(category, ticketNumb);
 
 	}
 
 	public Ticket() {
-		
-		
-		
+
 	}
 
 	public String getCity() {
@@ -92,11 +87,11 @@ public class Ticket {
 		this.totalPrice = totalPrice;
 	}
 
-	public String getTicketNumb() {
+	public int getTicketNumb() {
 		return ticketNumb;
 	}
 
-	public void setTicketNumb(String ticketNumb) {
+	public void setTicketNumb(int ticketNumb) {
 		this.ticketNumb = ticketNumb;
 	}
 
@@ -117,7 +112,7 @@ public class Ticket {
 			result = 10 * ticketNumb;
 			break;
 		}
-		this.totalPrice=result;
+		this.totalPrice = result;
 		return result;
 	}
 

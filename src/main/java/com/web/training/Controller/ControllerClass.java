@@ -20,10 +20,10 @@ public class ControllerClass {
 	TicketService ticketService;
 
 	@GetMapping("/")
-	public String homePage(Model model, @RequestParam(required = false) String id) {
+	public String homePage(Model model, @RequestParam(required = false, defaultValue = "-1") Integer id) {
 
-		int index = ticketService.indexDetermination(id);
-		model.addAttribute("ticket",ticketService.getTicketByIndex(index));
+		int index = ticketService.getIndexById(id);
+		model.addAttribute("ticket", ticketService.getTicketByIndex(index));
 
 		return "form";
 	}
